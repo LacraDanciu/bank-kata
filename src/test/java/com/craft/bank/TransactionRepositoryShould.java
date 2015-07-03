@@ -32,7 +32,7 @@ public class TransactionRepositoryShould {
     @Test
     public void addATransactionWithTheGivenAmmount() {
 
-        transactionRepository.add(100);
+        transactionRepository.create(100);
 
         verify(clockProvider).now();
 

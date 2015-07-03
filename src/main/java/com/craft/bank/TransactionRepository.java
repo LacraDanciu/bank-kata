@@ -20,7 +20,7 @@ public class TransactionRepository {
         this.clockProvider = clockProvider;
     }
 
-    public void add(int amount) {
+    public void create(int amount) {
         transactions.add(new Transaction(clockProvider.now(), amount));
     }
 

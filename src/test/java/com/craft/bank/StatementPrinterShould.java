@@ -38,7 +38,7 @@ public class StatementPrinterShould {
     private StatementPrinter statementPrinter;
 
     @Test
-    public void printStatement() {
+    public void printAStatementOfTransactionsInReverseCronologicalOrder() {
 
         List<Transaction> transactions = Arrays.asList(
                 aTransaction().withDate(now().minusMonths(1)).withAmount(SALARY).build(),

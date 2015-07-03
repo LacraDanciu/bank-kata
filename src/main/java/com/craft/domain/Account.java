@@ -1,4 +1,4 @@
-package com.craft;
+package com.craft.domain;
 
 public interface Account {
 

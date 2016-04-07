@@ -1,16 +1,15 @@
 package com.craft;
 
-import com.craft.Account;
-import com.craft.BankAccount;
-import com.craft.Console;
 import org.junit.Test;
+import org.mockito.InOrder;
 
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
 
 public class PrintStatementFeature {
 
     private Account account = new BankAccount();
-    private Console console;
+    private Console console = mock(Console.class);
 
     @Test
     public void print_statement_containing_transactions_in_reverse_chronological_order() {
@@ -20,9 +19,11 @@ public class PrintStatementFeature {
 
         account.printStatement();
 
-        verify(console).printLine("DATE | AMOUNT | BALANCE");
-        verify(console).printLine("10/04/2014 | 500.00 | 1400.00");
-        verify(console).printLine("02/04/2014 | -100.00 | 900.00");
-        verify(console).printLine("01/04/2014 | 1000.00 | 1000.00");
+        InOrder inOrder = inOrder(console);
+        inOrder.verify(console).printLine("DATE | AMOUNT | BALANCE");
+        inOrder.verify(console).printLine("10/04/2016 | 500.00 | 1400.00");
+        inOrder.verify(console).printLine("02/04/2016 | -100.00 | 900.00");
+        inOrder.verify(console).printLine("01/04/2016 | 1000.00 | 1000.00");
+        inOrder.verifyNoMoreInteractions();
     }
 }

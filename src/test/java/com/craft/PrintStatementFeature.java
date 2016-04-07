@@ -25,9 +25,9 @@ public class PrintStatementFeature {
           console = mock(Console.class);
         ClockProvider clockProvider = mock(ClockProvider.class);
         when(clockProvider.now())
-                .thenReturn(LocalDate.of(2014, 4, 1))
-                .thenReturn(LocalDate.of(2014, 4, 2))
-                .thenReturn(LocalDate.of(2014, 4, 10));
+                .thenReturn(LocalDate.of(2016, 4, 1))
+                .thenReturn(LocalDate.of(2016, 4, 2))
+                .thenReturn(LocalDate.of(2016, 4, 10));
         account = new BankAccount(new TransactionRepository(clockProvider), new StatementPrinter(console));
     }
 
@@ -41,9 +41,9 @@ public class PrintStatementFeature {
 
         InOrder inOrder = inOrder(console);
         inOrder.verify(console).printLine("DATE | AMOUNT | BALANCE");
-        inOrder.verify(console).printLine("10/04/2014 | 500.00 | 1400.00");
-        inOrder.verify(console).printLine("02/04/2014 | -100.00 | 900.00");
-        inOrder.verify(console).printLine("01/04/2014 | 1000.00 | 1000.00");
+        inOrder.verify(console).printLine("10/04/2016 | 500.00 | 1400.00");
+        inOrder.verify(console).printLine("02/04/2016 | -100.00 | 900.00");
+        inOrder.verify(console).printLine("01/04/2016 | 1000.00 | 1000.00");
         inOrder.verifyNoMoreInteractions();
     }
 }

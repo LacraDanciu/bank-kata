@@ -31,13 +31,10 @@ public class StatementPrinter {
         console.printLine(HEADER);
         amounts.stream()
                 .sorted((i,j) -> j.getDate().compareTo(i.getDate()))
-                .forEach(i ->
-                        console.printLine(
-                            MessageFormat.format("{0} | {1,number,#.00} | {2,number,#.00}",
-                                    i.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                                    i.getAmount(), i.getBalance())
-                        )
-        );
+                .map(i -> MessageFormat.format("{0} | {1,number,#.00} | {2,number,#.00}",
+                        i.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                        i.getAmount(), i.getBalance()))
+                .forEach(console::printLine);
     }
 
     private class BalancedTransaction extends Transaction {

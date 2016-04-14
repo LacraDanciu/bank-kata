@@ -8,11 +8,10 @@ import static org.mockito.Mockito.mock;
 
 public class PrintStatementFeature {
 
-    private Account account = new BankAccount();
-    private Console console = mock(Console.class);
-
     @Test
     public void printedStatementShouldContainAccountOperations() {
+        Account account = new BankAccount();
+        Console console = mock(Console.class);
         account.deposit(1000);
         account.withdraw(100);
         account.deposit(500);

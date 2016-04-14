@@ -12,7 +12,7 @@ public class PrintStatementFeature {
     private Console console = mock(Console.class);
 
     @Test
-    public void print_statement_containing_transactions_in_reverse_chronological_order() {
+    public void printedStatementShouldContainAccountOperations() {
         account.deposit(1000);
         account.withdraw(100);
         account.deposit(500);
